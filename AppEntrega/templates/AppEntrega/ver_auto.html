@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <form action={% url 'ver_auto' %} method="GET">
+       {%csrf_token%}
+
+      <p>Patente
+        <input type='number' name='patente'>
+      </p>
+
+        <input type="submit" placeholder="Enviar" />
+      </p>
+
+    </form>
+    {% if auto %} {% for auto in autos %}
+    <p>{{auto.marca}} {{auto.modelo}} {{auto.patente}}</p>
+    {% endfor %} {% else %}
+    <p>No hay autos registrados</p>
+    {% endif %}
+  </body>
+</html>
